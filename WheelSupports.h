@@ -63,6 +63,8 @@ enum DeviceMode
 #define kGPCommandMaxLength							8
 #define kGPCommandsDataSize							sizeof(UInt8) * kGPCommandsMax * kGPCommandMaxLength
 
+#define MAXIMUM_TRIES 2048
+
 struct CCommands
 {
 	UInt8 cmds[kGPCommandsMax][kGPCommandMaxLength];

@@ -46,12 +46,10 @@ IOHIDManagerRef AllocateHIDManager()
 bool ConfigAllDevices(const DeviceMode mode)
 {
 	bool changed = false;
-    int tryCount = 0;
+    int tryCount = 1;
 
-    while(changed == false && tryCount < MAXIMUM_TRIES)
+    while(changed == false)
     {
-        tryCount++;
-
         // Obtain a copy of the list of connected devices
         IOHIDManagerRef managerRef = AllocateHIDManager();
         CFSetRef deviceCFSetRef = IOHIDManagerCopyDevices(managerRef);
@@ -75,9 +73,11 @@ bool ConfigAllDevices(const DeviceMode mode)
         // Release the list
         CFRelease(devCFArrayRef);
         CFRelease(deviceCFSetRef);
+
+        tryCount++;
     }
 
-    printf("Succeeded after %i tries.", tryCount);
+    printf("Succeed after %i tries.", tryCount);
 
 	return changed;
 }
