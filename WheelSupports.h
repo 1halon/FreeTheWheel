@@ -64,6 +64,7 @@ enum DeviceMode
 #define kGPCommandsDataSize							sizeof(UInt8) * kGPCommandsMax * kGPCommandMaxLength
 
 #define MAXIMUM_TRIES 2048
+#define DELAY_BETWEEN_COMMANDS 50000
 
 struct CCommands
 {

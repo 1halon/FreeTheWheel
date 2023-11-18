@@ -6,6 +6,7 @@
 //  Copyright (c) 2012 Feral Interactive. All rights reserved.
 //
 
+#include <unistd.h>
 #include <CoreFoundation/CFString.h>
 #include <string>
 #include "WheelSupports.h"
@@ -278,11 +279,13 @@ bool ConfigLogitechWheels(IOHIDDeviceRef hidDevice, DeviceID deviceID, bool nati
 		// Activate full native and 900 degree mode
 		if(OpenDevice(hidDevice) == kIOReturnSuccess)
 		{
+            usleep(DELAY_BETWEEN_COMMANDS);
 			CCommands commands;
 			GetCmdLogitechWheelRange(&commands, targetDeviceID, kGPLogitechWheelRangeMax);
 			SendCommands(hidDevice, &commands);
 			printf("Calibrated full wheel range. (VendorID/DeviceID %x)\n", deviceID);
 			
+            usleep(DELAY_BETWEEN_COMMANDS);
 			GetCmdLogitechWheelNative(&commands, targetDeviceID);
 			SendCommands(hidDevice, &commands);
 			printf("Enabled native mode. (VendorID/DeviceID %x)\n", deviceID);
