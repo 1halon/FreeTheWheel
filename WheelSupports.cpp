@@ -69,6 +69,10 @@ bool ConfigAllDevices(const DeviceMode mode) {
       DeviceID deviceID = MakeDeviceID(productID, vendorID);
 
       changed |= ConfigDevice(hidDevice, deviceID, mode);
+      // WARNING: Comment out this statement if you are using more than a single
+      // device.
+      if (changed)
+        break;
     }
 
     // Release the list
