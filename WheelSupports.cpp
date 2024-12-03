@@ -308,6 +308,11 @@ bool ConfigLogitechWheels(IOHIDDeviceRef hidDevice, DeviceID deviceID,
 
         printf("Calibrated 900 degree wheel movement. (VendorID/DeviceID %x)\n",
                deviceID);
+
+        usleep(DELAY_BETWEEN_COMMANDS);
+        GetCmdLogitechWheelAutoCenter(&commands, deviceID);
+        SendCommands(hidDevice, &commands);
+        printf("Disabled auto-centering. (VendorID/DeviceID %x)\n", deviceID);
         changed = true;
       } else {
         // We don't know how to go back to restricted mode, but we can set the
@@ -500,6 +505,33 @@ void GetCmdLogitechWheelRange(CCommands *c, const DeviceID deviceID,
     c->cmds[0][6] = 0x00;
     c->cmds[0][7] = 0x00;
   }
+  default:
+    c->count = 0;
+    break;
+  }
+}
+
+//=============================================================================
+// GetCmdLogitechWheelAutoCenter : Deactivate auto-centering for given device ID
+// WARNING: G29 is the only wheel that is implemented.
+//-----------------------------------------------------------------------------
+void GetCmdLogitechWheelAutoCenter(CCommands *c, const DeviceID deviceID) {
+  // Fill the command array with null
+  memset(c->cmds, 0, kGPCommandsDataSize);
+
+  // Fill in the command value according to target deviceID
+  switch (deviceID) {
+  case kGPLogitechG29Native:
+    c->cmds[0][0] = 0xf5;
+    c->cmds[0][1] = 0x00;
+    c->cmds[0][2] = 0x00;
+    c->cmds[0][3] = 0x00;
+    c->cmds[0][4] = 0x00;
+    c->cmds[0][5] = 0x00;
+    c->cmds[0][6] = 0x00;
+    c->cmds[0][7] = 0x00;
+    c->count = 2;
+    break;
   default:
     c->count = 0;
     break;

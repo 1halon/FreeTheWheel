@@ -85,5 +85,6 @@ bool ConfigLogitechWheels(IOHIDDeviceRef hidDevice, DeviceID deviceID,
 
 void GetCmdLogitechWheelNative(CCommands *c, const DeviceID deviceID);
 void GetCmdLogitechWheelRange(CCommands *c, const DeviceID deviceID, int range);
+void GetCmdLogitechWheelAutoCenter(CCommands *c, const DeviceID deviceID);
 
 #endif /* defined(__WheelSupportTools__WheelSupports__) */
