@@ -1,30 +1,22 @@
 Free The Wheel for OS X
 ============
 
-I slightly modified it to run on my M1 Macbook pro, it's pure disgusting bruteforce but it works...  
-
 Logitech driving wheel enabler based on [Feral Interactive's FreeTheWheel](http://support.feralinteractive.com/en/faqs/free_the_wheel/)
 
-## OS X Catalina
+## OS X Sequoia
 
-This is a fork of [jackhumbert's FreeTheWheel](https://github.com/jackhumbert/FreeTheWheel).
-I just made it to work on OS X Catalina. As far is I know, it works for the following wheels. Please let me know if your wheel works!
+This is a fork of [WATERMELOUN3's FreeTheWheel](https://github.com/WATERMELOUN3/FreeTheWheel).
 
-* G27
-* Driving Force GT
-
-## Features for the G27
+## Features for the G29
 
 * Full 900˚ Rotation
-* Force Feedback with the [LogitechForceFeedback.kext](http://faq.iracing.com/article.php?id=209)
-* 3 Buttons enabled on the wheel
-* More?
+* All Buttons enabled on the wheel
+* Clutch and shifter support
+* Auto-centering disabled on the wheel
 
 ## What it's missing
 
-* Clutch support
-* All 6 buttons on the wheel
-* Shifter support?
+* Force Feedback
 
 ## How to use it
 
